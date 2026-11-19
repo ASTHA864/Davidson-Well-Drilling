@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FiArrowUpRight, FiMenu, FiPhone, FiX } from 'react-icons/fi'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 
@@ -13,12 +13,28 @@ const links = [
 ]
 
 function Navbar() {
-  const [openedAtPath, setOpenedAtPath] = useState(null)
-  const { pathname } = useLocation()
-  const menuOpen = openedAtPath === pathname
+  const [openedLocationKey, setOpenedLocationKey] = useState(null)
+  const menuToggleRef = useRef(null)
+  const { key } = useLocation()
+  const menuOpen = openedLocationKey === key
+
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen)
     return () => document.body.classList.remove('menu-open')
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setOpenedLocationKey(null)
+        menuToggleRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [menuOpen])
 
   return (
@@ -32,17 +48,18 @@ function Navbar() {
           <a className="mobile-call" href="tel:+17067546033" aria-label="Call Davidson Well Drilling at (706) 754-6033">
             <FiPhone aria-hidden="true" />
           </a>
-          <Link className="button button-primary mobile-quote" to="/contact#quote" onClick={() => setOpenedAtPath(null)} aria-label="Request a Quote">
+          <Link className="button button-primary mobile-quote" to="/contact#quote" onClick={() => setOpenedLocationKey(null)} aria-label="Request a Quote">
             <span className="mobile-quote-full">Request a Quote</span>
             <span className="mobile-quote-short" aria-hidden="true">Quote</span>
           </Link>
           <button
+            ref={menuToggleRef}
             className="menu-toggle"
             type="button"
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
-            onClick={() => setOpenedAtPath(menuOpen ? null : pathname)}
+            onClick={() => setOpenedLocationKey(menuOpen ? null : key)}
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -50,17 +67,17 @@ function Navbar() {
         <nav id="primary-navigation" className={`primary-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
           <div className="nav-links">
             {links.map(([label, to]) => (
-              <NavLink key={to} to={to} end={to === '/'} onClick={() => setOpenedAtPath(null)} className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
+              <NavLink key={to} to={to} end={to === '/'} onClick={() => setOpenedLocationKey(null)} className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
                 {label}
               </NavLink>
             ))}
           </div>
-          <Link className="button button-primary nav-quote" to="/contact#quote" onClick={() => setOpenedAtPath(null)}>
+          <Link className="button button-primary nav-quote" to="/contact#quote" onClick={() => setOpenedLocationKey(null)}>
             Request a Quote <FiArrowUpRight aria-hidden="true" />
           </Link>
         </nav>
       </div>
-      {menuOpen && <button className="nav-backdrop" aria-label="Close navigation menu" onClick={() => setOpenedAtPath(null)} />}
+      {menuOpen && <button className="nav-backdrop" type="button" aria-label="Close navigation menu" onClick={() => setOpenedLocationKey(null)} />}
     </header>
   )
 }

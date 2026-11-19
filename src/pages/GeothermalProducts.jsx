@@ -12,7 +12,7 @@ function GeothermalProducts() {
           <p className="eyebrow">Ground source heat exchange</p>
           <h2>Geothermal ground loop systems.</h2>
           <p>Ground-source heat pump systems exchange heat with the earth through a buried loop. In broad terms, a heat pump moves heat between a building and the ground as heating or cooling is needed.</p>
-          <p>Davidson Well Drilling’s original site specifies its role as drilling and down-hole installation of vertical ground loop systems and transfer medium. The company can work with your geothermal or heating-and-air contractor; it does not claim to supply or install the entire HVAC system.</p>
+          <p>Davidson Well Drilling provides drilling and down-hole installation of vertical ground loop systems and transfer medium. We can work with your geothermal or heating-and-air contractor; complete HVAC system installation is handled by your contractor.</p>
           <ul className="check-list"><li><FiCheck aria-hidden="true" /> Vertical loop drilling</li><li><FiCheck aria-hidden="true" /> Down-hole installation</li><li><FiCheck aria-hidden="true" /> Coordination with your geothermal or HVAC contractor</li></ul>
           <Link className="text-link" to="/contact">Discuss a geothermal project <FiArrowRight aria-hidden="true" /></Link>
         </div>
@@ -26,7 +26,7 @@ function GeothermalProducts() {
       </section>
       <section className="section-wrap product-extra">
         <div className="product-extra-image"><img src="/images/0005.jpg" alt="Well drilling project equipment" loading="lazy" /></div>
-        <div><p className="eyebrow">More for your well</p><h2>Wellhead finishing stones.</h2><p>The original company site also notes that it offers rocks for dressing up a wellhead. Contact the team to ask about available options.</p><Link className="text-link" to="/services">View all services <FiArrowRight aria-hidden="true" /></Link></div>
+        <div><p className="eyebrow">More for your well</p><h2>Wellhead finishing stones.</h2><p>Davidson also offers rocks for dressing up a wellhead. Contact the team to ask about available options.</p><Link className="text-link" to="/services">View all services <FiArrowRight aria-hidden="true" /></Link></div>
       </section>
       <CTASection title="Planning a geothermal or water well project?" text="Talk with our team about drilling, down-hole installation, and pump service." />
     </main>

@@ -15,7 +15,7 @@ function Contact() {
           <a className="contact-detail" href="tel:+18002041483"><span><FiPhone aria-hidden="true" /></span><div><small>Toll free</small><strong>(800) 204-1483</strong></div></a>
           <a className="contact-detail" href="mailto:info@davidsonwelldrillinginc.com"><span><FiMail aria-hidden="true" /></span><div><small>Email</small><strong>info@davidsonwelldrillinginc.com</strong></div></a>
           <a className="contact-detail" href="https://maps.google.com/?q=3454+Old+Historic+441,+Turnerville,+GA+30580" target="_blank" rel="noreferrer"><span><FiMapPin aria-hidden="true" /></span><div><small>Visit or get directions</small><strong>3454 Old Historic 441<br />PO Box 28, Turnerville, GA 30580</strong></div></a>
-          <div className="hours-note"><FiClock aria-hidden="true" /><p>Business hours aren’t listed on the company’s original website. Please call to confirm availability.</p></div>
+          <div className="hours-note"><FiClock aria-hidden="true" /><p>Call ahead to confirm current availability.</p></div>
         </div>
         <div className="contact-form-panel" id="quote">
           <div className="contact-form-heading"><p className="eyebrow">Send an enquiry</p><h2>How can we help?</h2><p>Fields marked <span aria-hidden="true">*</span> are required.</p></div>

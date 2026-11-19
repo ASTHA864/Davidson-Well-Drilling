@@ -5,7 +5,7 @@ import ServiceCard from '../components/ServiceCard.jsx'
 import CTASection from '../components/CTASection.jsx'
 
 const services = [
-  { icon: FiDroplet, title: 'Drilled Water Wells', description: 'Six-inch drilled water wells for residential and commercial water supply. The original site notes casing to bedrock, typically around 70–100 feet in surrounding areas.', to: '/contact#quote' },
+  { icon: FiDroplet, title: 'Drilled Water Wells', description: 'Six-inch drilled water wells for residential and commercial water supply. In surrounding areas, casing to bedrock is commonly around 70–100 feet; actual depth varies by property.', to: '/contact#quote' },
   { icon: FiBriefcase, title: 'Residential & Commercial Systems', description: 'Complete water well systems for homes, businesses, and commercial properties.', to: '/contact#quote' },
   { icon: FiTrendingUp, image: '/images/hydro-frac01.jpg', title: 'Hydrofracturing', description: 'Water-only hydrofracturing may help improve flow in certain low-yield wells. Results depend on well conditions.', to: '/hydro-fracturing' },
   { icon: FiLayers, image: '/images/geotherm.jpg', title: 'Geothermal Ground Loops', description: 'Vertical ground loop drilling and down-hole installation, coordinated with your geothermal or HVAC contractor.', to: '/geothermal-products' },
@@ -28,7 +28,7 @@ function Services() {
       </section>
       <section className="service-note section-wrap">
         <div className="service-note-icon"><FiDroplet aria-hidden="true" /></div>
-        <div><h2>Looking for water treatment or testing?</h2><p>The company’s original website says it does not currently offer water testing, treatment, or maintenance. Contact Davidson directly to confirm current availability or ask about referrals.</p></div>
+        <div><h2>Looking for water treatment or testing?</h2><p>Davidson does not currently offer water testing, treatment, or maintenance. Contact the team to confirm current availability or ask about referrals.</p></div>
         <Link className="text-link" to="/contact">Contact us <FiArrowRight aria-hidden="true" /></Link>
       </section>
       <CTASection />

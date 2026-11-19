@@ -2,8 +2,8 @@
 
 :root {
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  color: #263445;
-  background: #fff;
+  color: #293a34;
+  background: #fbf8f2;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -11,14 +11,14 @@
   font-optical-sizing: auto;
   font-weight: 400;
 
-  --navy: #0b1f3a;
-  --navy-deep: #071c30;
-  --blue: #087dba;
-  --sky: #38bdf8;
-  --text: #263445;
-  --muted: #64748b;
-  --light: #f5f7fa;
-  --line: #e3eaf0;
+  --navy: #203b32;
+  --navy-deep: #142a24;
+  --blue: #b65f3b;
+  --sky: #e3b66b;
+  --text: #293a34;
+  --muted: #68766d;
+  --light: #f3efe6;
+  --line: #e5dfd4;
   --heading: 'Manrope', 'Segoe UI', sans-serif;
 }
 

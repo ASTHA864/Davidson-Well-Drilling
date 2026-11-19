@@ -16,7 +16,7 @@ function FAQ() {
           <p>Every property and well is different. For advice about your specific site or system, contact Davidson Well Drilling directly.</p>
           <Link className="text-link" to="/contact">Still have questions? <FiArrowRight aria-hidden="true" /></Link>
         </div>
-        <FAQAccordion items={faqItems} />
+        <FAQAccordion items={faqItems} searchable />
       </section>
       <CTASection title="Have a question about your well?" text="Call us or send a message. We’ll be glad to hear what you’re working on." />
     </main>

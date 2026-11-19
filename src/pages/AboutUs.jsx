@@ -11,17 +11,17 @@ function AboutUs() {
         <div className="detail-copy">
           <p className="eyebrow">Our story</p>
           <h2>Built on local knowledge and word of mouth.</h2>
-          <p>Davidson Well Drilling is a family-owned and operated business serving Northeast Georgia and Western South Carolina since 1973. The original company website describes a business whose reputation has grown through satisfied customers and word of mouth.</p>
+          <p>Davidson Well Drilling is a family-owned and operated business serving Northeast Georgia and Western South Carolina since 1973. Over the years, satisfied customers and word of mouth have helped the business grow.</p>
           <p>Based in Turnerville, Georgia, the company provides drilled water wells, residential and commercial well systems, pump sales and service, hydrofracturing, and geothermal ground loop drilling and installation.</p>
-          <p>Barry Davidson is identified on the original site as Baroid-certified for geothermal ground loop installation. Davidson Well Drilling is licensed in Georgia and South Carolina and fully insured, according to its original company information.</p>
+          <p>Barry Davidson is Baroid-certified for geothermal ground loop installation. Davidson Well Drilling is licensed in Georgia and South Carolina and fully insured.</p>
         </div>
       </section>
       <section className="section-band">
         <div className="section-wrap values-grid">
-          <div><p className="eyebrow">What guides our work</p><h2>Our neighbors deserve thoughtful service.</h2><p>The company’s original website describes its customers as neighbors, friends, and family, and a commitment to doing its best to provide what customers need with good service.</p></div>
+          <div><p className="eyebrow">What guides our work</p><h2>Our neighbors deserve thoughtful service.</h2><p>Our customers are our neighbors, friends, and family. We listen to what you need and work to provide thoughtful, reliable service.</p></div>
           <div className="value-card"><FiHeart aria-hidden="true" /><h3>Personal service</h3><p>A family-owned team serving its local communities.</p></div>
           <div className="value-card"><FiDroplet aria-hidden="true" /><h3>Practical expertise</h3><p>Well systems, pump work, hydrofracturing, and geothermal loop installation.</p></div>
-          <div className="value-card"><FiCheck aria-hidden="true" /><h3>Professional commitment</h3><p>Licensed in Georgia and South Carolina, and fully insured, as stated on the company’s original site.</p></div>
+          <div className="value-card"><FiCheck aria-hidden="true" /><h3>Professional commitment</h3><p>Licensed in Georgia and South Carolina, and fully insured.</p></div>
         </div>
       </section>
       <section className="section-wrap about-gallery">

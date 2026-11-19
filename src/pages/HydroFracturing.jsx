@@ -5,7 +5,7 @@ import FAQAccordion from '../components/FAQAccordion.jsx'
 
 const hydroFaqs = [
   { question: 'Will hydrofracturing restore my well?', answer: 'It may help some low-yield wells, but the result depends on the well’s condition and geology. An evaluation is needed, and improvement is not guaranteed.' },
-  { question: 'Are additives used?', answer: 'The company’s original site describes using clean water without additives. Ask the team about the proposed work for your well.' },
+  { question: 'Are additives used?', answer: 'Davidson uses clean water without additives. Ask the team about the proposed work for your well.' },
   { question: 'Do I need a new well instead?', answer: 'Not necessarily. The company describes hydrofracturing as a possible option for some underperforming wells. Davidson can discuss whether it may be appropriate for your situation.' },
 ]
 
@@ -18,7 +18,7 @@ function HydroFracturing() {
           <p className="eyebrow">Understanding hydrofracturing</p>
           <h2>What is hydrofracturing?</h2>
           <p>After a well is drilled, silt or mineral deposits can build up around water-producing fractures in the rock. Hydrofracturing is a well-development process in which water is injected at pressure to help clear or open existing fractures and improve flow.</p>
-          <p>Davidson Well Drilling’s original website describes a water-only process, without additives. Whether it may help depends on the well’s construction and local geology, so outcomes are not guaranteed.</p>
+          <p>Davidson uses a water-only process, without additives. Whether it may help depends on the well’s construction and local geology, so outcomes are not guaranteed.</p>
           <p>This service is for existing water wells; it is different from oil and gas extraction. Contact the team to discuss the condition and history of your well.</p>
         </div>
         <figure className="detail-photo"><img src="/images/hydro-frac01.jpg" alt="Hydrofracturing equipment used during well service" loading="lazy" /><figcaption>Hydrofracturing equipment</figcaption></figure>

@@ -37,10 +37,10 @@ function ContactForm({ compact = false }) {
   return (
     <form className={`contact-form${compact ? ' contact-form-compact' : ''}`} onSubmit={handleSubmit} aria-busy={submitting}>
       <div className="form-grid">
-        <label>Full name <span aria-hidden="true">*</span><input autoComplete="name" name="name" required placeholder="Your name" /></label>
-        <label>Email address <span aria-hidden="true">*</span><input autoComplete="email" name="email" type="email" required placeholder="you@example.com" /></label>
-        <label>Phone number<input autoComplete="tel" name="phone" type="tel" placeholder="(555) 555-5555" /></label>
-        <label>Service required
+        <label><span className="field-label">Full name <span aria-hidden="true">*</span></span><input autoComplete="name" name="name" required placeholder="Your name" /></label>
+        <label><span className="field-label">Email address <span aria-hidden="true">*</span></span><input autoComplete="email" name="email" type="email" required placeholder="you@example.com" /></label>
+        <label><span className="field-label">Phone number</span><input autoComplete="tel" name="phone" type="tel" placeholder="(555) 555-5555" /></label>
+        <label><span className="field-label">Service required</span>
           <select name="service" defaultValue="" required>
             <option value="">Select a service</option>
             <option>Water well drilling</option>
@@ -52,7 +52,7 @@ function ContactForm({ compact = false }) {
             <option>Other / not sure</option>
           </select>
         </label>
-        <label className="form-message">Message <span aria-hidden="true">*</span><textarea name="message" rows="5" required placeholder="Tell us a little about your project" /></label>
+        <label className="form-message"><span className="field-label">Message <span aria-hidden="true">*</span></span><textarea name="message" rows="5" required placeholder="Tell us a little about your project" /></label>
       </div>
       <div className="form-submit-row">
         <button className="button button-primary" type="submit" disabled={submitting}>{submitting ? 'Sending…' : 'Send enquiry'} <FiArrowUpRight aria-hidden="true" /></button>
