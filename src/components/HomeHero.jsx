@@ -2,6 +2,9 @@ import { useEffect, useRef } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const rotatingHeadlines = [
   'Expert Drilling Solutions.',
@@ -33,6 +36,17 @@ function HomeHero() {
         { autoAlpha: 0, y: 18 },
         { autoAlpha: 1, y: 0, duration: 0.62, stagger: 0.1, ease: 'power2.out' },
       )
+      gsap.to(heroRef.current.querySelector('.dw-hero-rig'), {
+        y: 36,
+        rotation: 1.5,
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.2 },
+      })
+      gsap.to(heroRef.current.querySelectorAll('.dw-hero-glow'), {
+        y: (index) => (index === 0 ? -35 : 28),
+        ease: 'none',
+        scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.4 },
+      })
       const headlineLayers = [firstHeadlineRef.current, secondHeadlineRef.current]
       const timeline = gsap.timeline({ repeat: -1 })
 
@@ -70,6 +84,19 @@ function HomeHero() {
     <section className="dw-hero" aria-labelledby="home-heading" ref={heroRef}>
       <div className="dw-hero-glow dw-hero-glow-left" aria-hidden="true" />
       <div className="dw-hero-glow dw-hero-glow-right" aria-hidden="true" />
+      <div className="dw-hero-rig" aria-hidden="true">
+        <svg viewBox="0 0 250 310" role="presentation">
+          <path className="rig-ground" d="M18 278H232" />
+          <path className="rig-frame" d="M62 278V96H188V278M62 96H188M78 278V122H172V278M172 122H188M78 122H62" />
+          <path className="rig-frame" d="M92 278V52H158V278M92 52H158M103 52V278M147 52V278" />
+          <path className="rig-cable" d="M125 52V278" />
+          <circle className="rig-wheel" cx="67" cy="278" r="18" />
+          <circle className="rig-wheel" cx="183" cy="278" r="18" />
+          <circle className="rig-hub" cx="67" cy="278" r="6" />
+          <circle className="rig-hub" cx="183" cy="278" r="6" />
+          <path className="rig-frame" d="M92 52L125 18L158 52M125 18V52" />
+        </svg>
+      </div>
       <div className="dw-hero-content">
         <p className="dw-eyebrow dw-hero-badge" data-hero-reveal>
           <span className="dw-badge-dot" aria-hidden="true" />

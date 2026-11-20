@@ -524,7 +524,23 @@
 .dw-hero-glow { position: absolute; width: 300px; aspect-ratio: 1; border-radius: 50%; filter: blur(85px); opacity: .35; pointer-events: none; }
 .dw-hero-glow-left { top: 8%; left: -190px; background: #d7ceff; }
 .dw-hero-glow-right { right: -200px; bottom: 4%; background: #ffcbd5; }
-.dw-hero-content { position: relative; z-index: 1; width: min(940px, 100%); }
+.dw-hero-rig {
+  position: absolute;
+  right: clamp(-30px, 3vw, 48px);
+  bottom: 18px;
+  width: clamp(150px, 18vw, 250px);
+  opacity: .14;
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+.dw-hero-rig svg { width: 100%; height: auto; overflow: visible; }
+.dw-hero-rig path, .dw-hero-rig circle { fill: none; stroke: #b51d3b; stroke-linecap: round; stroke-linejoin: round; }
+.dw-hero-rig .rig-ground { stroke-width: 2; }
+.dw-hero-rig .rig-frame { stroke-width: 5; }
+.dw-hero-rig .rig-cable { stroke-width: 2; stroke-dasharray: 5 7; }
+.dw-hero-rig .rig-wheel { stroke-width: 8; }
+.dw-hero-rig .rig-hub { stroke-width: 3; fill: #fff; }
+.dw-hero-content { position: relative; z-index: 2; width: min(940px, 100%); }
 .dw-eyebrow {
   margin: 0 0 18px;
   color: #74778a;
@@ -1723,6 +1739,51 @@
 .geothermal-section-number span { color: #a2a3ae; font-size: 9px; }
 .geothermal-understanding h2 { max-width: 540px; }
 .geothermal-understanding > p { padding-top: 30px; }
+.geothermal-cross-section {
+  display: grid;
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: center;
+  padding-block: 30px 92px;
+}
+.geothermal-cross-copy h2 { max-width: 380px; margin: 0 0 15px; color: #171923; font: 800 clamp(31px, 4vw, 46px)/1.12 var(--heading); letter-spacing: -.06em; }
+.geothermal-cross-copy > p:not(.eyebrow) { max-width: 340px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.geothermal-visual {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e8e8ef;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fbfbfd 0 30%, #f1eff8 30% 100%);
+  box-shadow: 0 18px 42px rgba(23,25,35,.07);
+}
+.geothermal-visual svg { width: 100%; height: auto; }
+.geo-surface { fill: #e7e3f2; }
+.geo-building { fill: #fff; stroke: #b51d3b; stroke-width: 2; }
+.geo-building-line { fill: none; stroke: #b51d3b; stroke-width: 2; }
+.geo-bore { fill: none; stroke: #77798a; stroke-width: 8; stroke-linecap: round; }
+.geo-flow-line { fill: none; stroke: #b51d3b; stroke-width: 3; stroke-dasharray: 14 30; stroke-linecap: round; }
+.geo-bore-head { fill: #fff; stroke: #b51d3b; stroke-width: 3; }
+.geo-header { fill: none; stroke: #77798a; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.geo-header-flow { stroke: #b51d3b; stroke-width: 3; }
+.geo-depth-marks path { fill: none; stroke: #c5c4cf; stroke-width: 1; stroke-dasharray: 4 5; }
+.geo-depth-marks text { fill: #898a97; font: 600 9px 'DM Sans', sans-serif; }
+.geo-visual-key {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid rgba(232,232,239,.9);
+  border-radius: 8px;
+  background: rgba(255,255,255,.86);
+  color: #686b7a;
+  font-size: 9px;
+  font-weight: 700;
+}
+.geo-visual-key span { display: flex; align-items: center; gap: 5px; }
+.geo-visual-key i { width: 14px; height: 3px; border-radius: 5px; background: #b51d3b; }
+.geo-visual-key .geo-key-return { background: #77798a; }
 .geothermal-role-section { padding: 84px 32px; background: #f5f5fc; }
 .geothermal-role-section-inner { width: min(1120px, 100%); margin-inline: auto; display: grid; grid-template-columns: 1fr .85fr; gap: 80px; align-items: center; }
 .geothermal-role-section h2 { max-width: 510px; margin-bottom: 15px; }
@@ -3437,6 +3498,12 @@
   isolation: isolate;
 }
 .work-story-card-1 { grid-row: 1 / span 2; }
+.work-story-card-1 {
+  position: sticky;
+  top: 100px;
+  height: 494px;
+  align-self: start;
+}
 .work-story-card::after {
   position: absolute;
   z-index: -1;
@@ -3639,5 +3706,26 @@
   .work-story-arrow,
   .work-expertise-card,
   .work-expertise-card-link svg { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .geothermal-cross-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .geothermal-cross-copy h2 { max-width: 560px; }
+  .geothermal-cross-copy > p:not(.eyebrow) { max-width: 520px; }
+  .work-story-card-1 {
+    position: relative;
+    top: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .geothermal-cross-section { padding-block: 20px 64px; }
+  .geothermal-visual { border-radius: 15px; }
+  .geo-visual-key { right: 8px; bottom: 7px; padding: 6px 8px; }
+  .dw-hero-rig { right: -20px; width: 125px; opacity: .1; }
 }
 

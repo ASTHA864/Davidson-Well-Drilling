@@ -61,6 +61,53 @@ function GeothermalGroundLoops() {
         </p>
       </section>
 
+      <section className="geothermal-cross-section section-wrap" data-reveal>
+        <div className="geothermal-cross-copy">
+          <p className="eyebrow">Below the surface</p>
+          <h2>Vertical loop drilling, visualized.</h2>
+          <p>Representative flow illustration of a vertical ground loop portion of a geothermal project.</p>
+        </div>
+        <div className="geothermal-visual" data-geo-flow>
+          <svg viewBox="0 0 720 390" role="img" aria-labelledby="geo-visual-title geo-visual-desc">
+            <title id="geo-visual-title">Representative vertical geothermal ground loop illustration</title>
+            <desc id="geo-visual-desc">Underground vertical pipes move transfer medium below the surface toward a building connection.</desc>
+            <path className="geo-surface" d="M18 118C150 86 278 142 420 110C540 82 628 112 702 82V390H18Z" />
+            <g data-geo-depth>
+              <rect className="geo-building" x="86" y="44" width="86" height="82" rx="5" />
+              <path className="geo-building-line" d="M98 72H160M98 92H160M98 112H160" />
+            </g>
+            <g data-geo-depth>
+              <path className="geo-bore" d="M296 118V310" />
+              <path className="geo-flow-line" d="M296 118V310" />
+              <path className="geo-bore" d="M332 118V310" />
+              <path className="geo-flow-line" d="M332 310V118" />
+              <circle className="geo-bore-head" cx="296" cy="118" r="8" />
+              <circle className="geo-bore-head" cx="332" cy="118" r="8" />
+            </g>
+            <g data-geo-depth>
+              <path className="geo-bore" d="M494 118V256" />
+              <path className="geo-flow-line" d="M494 118V256" />
+              <path className="geo-bore" d="M530 118V256" />
+              <path className="geo-flow-line" d="M530 256V118" />
+              <circle className="geo-bore-head" cx="494" cy="118" r="8" />
+              <circle className="geo-bore-head" cx="530" cy="118" r="8" />
+            </g>
+            <path className="geo-header" d="M296 118H332M296 310C296 338 332 338 332 310M494 118H530M494 256C494 284 530 284 530 256M172 118H296M332 118H494M530 118H648" />
+            <path className="geo-flow-line geo-header-flow" d="M172 118H296M332 118H494M530 118H648" />
+            <g className="geo-depth-marks" aria-hidden="true">
+              <path d="M650 118H690M650 256H690M650 310H690" />
+              <text x="658" y="112">Surface</text>
+              <text x="658" y="250">Loop depth</text>
+              <text x="658" y="304">Representative</text>
+            </g>
+          </svg>
+          <div className="geo-visual-key" aria-hidden="true">
+            <span><i className="geo-key-out" />Supply</span>
+            <span><i className="geo-key-return" />Return</span>
+          </div>
+        </div>
+      </section>
+
       <section className="geothermal-detail section-wrap" id="vertical-drilling" data-reveal>
         <div className="geothermal-detail-heading">
           <p className="eyebrow">02 / Vertical ground loop drilling</p>

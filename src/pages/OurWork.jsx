@@ -24,6 +24,7 @@ function OurWork() {
         </div>
         <figure className="work-page-hero-image" data-reveal>
           <img
+            data-parallax
             src="/images/optimized/golden-hour-well-drilling.jpg"
             alt="Representative image of a water well drilling rig operating at a rural site."
             fetchPriority="high"
@@ -54,7 +55,7 @@ function OurWork() {
               key={image.src}
               to={image.to}
             >
-              <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+              <img data-image-reveal src={image.src} alt={image.alt} loading="lazy" decoding="async" />
               <span className="work-story-category">{image.category}</span>
               <span className="work-story-caption">Representative image</span>
               <span className="work-story-arrow" aria-hidden="true"><FiArrowUpRight /></span>
