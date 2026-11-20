@@ -158,12 +158,7 @@ function AboutUs() {
       </section>
 
       <div className="about-closing">
-        <ProjectInvitation
-          eyebrow="Talk with our team"
-          title="Ready to Start Your Next Project?"
-          description="From water well drilling to geothermal ground loop installation, we're ready to help."
-          actionLabel="Contact Davidson"
-        />
+        
       </div>
     </main>
   )
