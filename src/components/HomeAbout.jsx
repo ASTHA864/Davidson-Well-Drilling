@@ -1,35 +1,27 @@
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import GeologyProfile from './GeologyProfile.jsx'
 
 function HomeAbout() {
   return (
-    <section className="dw-about" aria-labelledby="about-heading">
+    <section className="dw-about" id="company-introduction" aria-labelledby="about-heading">
       <div className="dw-about-copy" data-reveal>
-        <p className="dw-eyebrow">A local team you can count on</p>
+        <p className="dw-eyebrow">EST. 1973 / Turnerville, Georgia</p>
         <h2 id="about-heading">
-          Experience You Can Trust.
-          <span>Quality You Can Depend On.</span>
+          Grounded in experience.
+          <span>Built for the work ahead.</span>
         </h2>
         <p>
-          Davidson works with property owners, businesses, and geothermal or
-          HVAC contractors on drilling and ground loop projects. Each site has
-          its own conditions, so the project scope is discussed with the team.
+          For more than five decades, Davidson Well Drilling has served property
+          owners, businesses, and project teams across Northeast Georgia and
+          Western South Carolina. Regional understanding and practical coordination
+          bring clarity to work that begins below ground.
         </p>
         <Link className="dw-text-link" to="/about-us">
           More about our company <FiArrowUpRight aria-hidden="true" />
         </Link>
       </div>
-      <figure className="dw-about-photo" data-reveal>
-        <img
-          src="/images/optimized/rural-drilling-rig.jpg"
-          alt="Representative image of drilling equipment in a rural field"
-          loading="lazy"
-        />
-        <figcaption>
-          <span className="dw-about-photo-mark" aria-hidden="true">ILLUSTRATIVE</span>
-          <span>Well drilling equipment</span>
-        </figcaption>
-      </figure>
+      <GeologyProfile />
     </section>
   )
 }

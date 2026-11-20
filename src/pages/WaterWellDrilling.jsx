@@ -50,7 +50,6 @@ function WaterWellDrilling() {
           <strong>Well depth depends on local geology and water conditions.</strong>
           <span className="water-well-note-mark">DW / 01</span>
         </aside>
-        <div className="water-well-orb" aria-hidden="true"><span /><span /></div>
       </header>
 
       <section className="water-well-intro section-wrap" id="water-well-intro" data-reveal>

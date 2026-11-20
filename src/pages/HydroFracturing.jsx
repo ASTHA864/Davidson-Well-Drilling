@@ -1,7 +1,8 @@
 import { useRef } from 'react'
-import { FiArrowDownRight, FiDroplet, FiInfo, FiShield } from 'react-icons/fi'
+import { FiArrowDownRight, FiInfo, FiShield } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import RelatedServices from '../components/RelatedServices.jsx'
+import ServiceIllustration from '../components/ServiceIllustration.jsx'
 import ServiceFAQSection from '../components/ServiceFAQSection.jsx'
 import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
 
@@ -40,11 +41,8 @@ function HydroFracturing() {
           </p>
           <Link className="hydro-hero-link" to="#hydro-process">Understand the process <FiArrowDownRight aria-hidden="true" /></Link>
         </div>
-        <div className="hydro-water-mark" aria-hidden="true">
-          <span className="hydro-water-ring hydro-water-ring-one" />
-          <span className="hydro-water-ring hydro-water-ring-two" />
-          <FiDroplet />
-          <small>WATER<br />ONLY</small>
+        <div className="hydro-illustration" data-reveal>
+          <ServiceIllustration variant="fractures" />
         </div>
       </header>
 

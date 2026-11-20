@@ -2,8 +2,8 @@
 
 :root {
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  color: #272938;
-  background: #fff;
+  color: #34495E;
+  background: #FFFFFF;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -11,20 +11,35 @@
   font-optical-sizing: auto;
   font-weight: 400;
 
-  --navy: #171923;
-  --navy-deep: #11131b;
-  --blue: #b51d3b;
-  --sky: #f3a5b3;
-  --text: #272938;
-  --muted: #686b7a;
-  --light: #f5f5fc;
-  --line: #e8e8ef;
+  --color-white: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-ice-blue: #F8FAFC;
+  --color-mist-blue: #D8E0E7;
+  --color-sky-blue: #6CA6CF;
+  --color-ocean-blue: #6CA6CF;
+  --color-steel-blue: #416D91;
+  --color-midnight: #18344D;
+  --color-slate: #202B38;
+  --color-muted: #718397;
+  --gradient-hero: #FFFFFF;
+  --gradient-light: #FFFFFF;
+  --gradient-blue: #F8FAFC;
+  --gradient-cta: #416D91;
+  --gradient-footer: #18344D;
+  --navy: var(--color-midnight);
+  --navy-deep: var(--color-midnight);
+  --blue: var(--color-steel-blue);
+  --sky: var(--color-sky-blue);
+  --text: var(--color-slate);
+  --muted: var(--color-muted);
+  --light: #FFFFFF;
+  --line: #D8E0E7;
   --heading: 'Manrope', 'Segoe UI', sans-serif;
 }
 
 * { box-sizing: border-box; }
 html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 90px; }
-body { margin: 0; min-height: 100vh; overflow-x: clip; }
+body { margin: 0; min-height: 100vh; overflow-x: clip; color: var(--color-slate); background: var(--color-background); }
 body.menu-open { overflow: hidden; }
 button, input, select, textarea { font: inherit; }
 button:disabled { cursor: wait; opacity: .7; }
@@ -32,4 +47,4 @@ button, a { -webkit-tap-highlight-color: transparent; }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-::selection { color: #fff; background: var(--blue); }
+::selection { color: var(--color-white); background: var(--color-steel-blue); }

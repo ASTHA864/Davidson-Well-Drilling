@@ -7,11 +7,11 @@ export const workGallery = [
     to: '/water-well-drilling',
   },
   {
-    src: '/images/optimized/rural-drilling-rig.jpg',
-    alt: 'Representative image of drilling equipment in a rural field.',
-    category: 'Drilling Equipment',
-    caption: 'Drilling equipment (representative image)',
-    to: '/services',
+    src: '/images/optimized/golden-hour-well-drilling.jpg',
+    alt: 'Representative image of a well drilling rig at a rural site in evening light.',
+    category: 'Field Operations',
+    caption: 'Field operations (representative image)',
+    to: '/water-well-drilling',
   },
   {
     src: '/images/optimized/geothermal-ground-loop-installation.jpg',

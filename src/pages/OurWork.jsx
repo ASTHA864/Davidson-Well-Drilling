@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { FiArrowUpRight } from 'react-icons/fi'
+import { useEffect, useRef, useState } from 'react'
+import { FiArrowUpRight, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
 import { drillingServices } from '../data/drillingServices.js'
@@ -7,7 +7,34 @@ import { workGallery } from '../data/workGallery.js'
 
 function OurWork() {
   const pageRef = useRef(null)
+  const dialogRef = useRef(null)
+  const galleryTriggerRef = useRef(null)
+  const [activeImage, setActiveImage] = useState(null)
   useGsapScrollReveal(pageRef)
+
+  useEffect(() => {
+    if (activeImage && dialogRef.current && !dialogRef.current.open) {
+      dialogRef.current.showModal()
+    }
+  }, [activeImage])
+
+  function closeGallery() {
+    if (dialogRef.current?.open) dialogRef.current.close()
+    setActiveImage(null)
+  }
+
+  function moveGalleryImage(direction) {
+    const activeIndex = workGallery.findIndex((image) => image.src === activeImage?.src)
+    const nextIndex = (activeIndex + direction + workGallery.length) % workGallery.length
+    setActiveImage(workGallery[nextIndex])
+  }
+
+  function handleDialogKeyDown(event) {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+
+    event.preventDefault()
+    moveGalleryImage(event.key === 'ArrowRight' ? 1 : -1)
+  }
 
   return (
     <main className="editorial-page work-page" ref={pageRef}>
@@ -16,26 +43,18 @@ function OurWork() {
           <p className="eyebrow" data-reveal>Our work · In the field</p>
           <h1 data-reveal>
             Behind Every Project,
-            <span>There's Groundwork.</span>
+            <span>There’s Groundwork.</span>
           </h1>
           <p className="work-page-hero-description" data-reveal>
-            Explore the drilling equipment, field operations and installation work that support Davidson Well Drilling&apos;s services.
+            A closer look at the drilling equipment, field operations, and installation work that support Davidson Well Drilling&apos;s services.
           </p>
         </div>
-        <figure className="work-page-hero-image" data-reveal>
-          <img
-            data-parallax
-            src="/images/optimized/golden-hour-well-drilling.jpg"
-            alt="Representative image of a water well drilling rig operating at a rural site."
-            fetchPriority="high"
-            decoding="async"
-          />
-          <figcaption>
-            <span>Field operations</span>
-            <strong>Representative image</strong>
-          </figcaption>
-          <span className="work-page-image-index" aria-hidden="true">01 / FIELD</span>
-        </figure>
+        <aside className="work-page-index" data-reveal>
+          <span className="work-page-index-label">FIELD GUIDE / 01</span>
+          <p>Drilling work shaped by the conditions beneath each site.</p>
+          <span className="work-page-index-rule" aria-hidden="true" />
+          <Link to="/services">Explore service scope <FiArrowUpRight aria-hidden="true" /></Link>
+        </aside>
       </header>
 
       <section className="work-gallery-section" aria-labelledby="work-gallery-heading">
@@ -48,21 +67,65 @@ function OurWork() {
         </div>
         <div className="work-editorial-gallery section-wrap">
           {workGallery.map((image, index) => (
-            <Link
-              aria-label={`${image.category}, representative image. Learn about this service.`}
+            <button
+              aria-label={`View representative image: ${image.category}`}
               className={`work-story-card work-story-card-${index + 1}`}
               data-reveal
+              onClick={(event) => {
+                galleryTriggerRef.current = event.currentTarget
+                setActiveImage(image)
+              }}
               key={image.src}
-              to={image.to}
+              type="button"
             >
               <img data-image-reveal src={image.src} alt={image.alt} loading="lazy" decoding="async" />
               <span className="work-story-category">{image.category}</span>
-              <span className="work-story-caption">Representative image</span>
+              <span className="work-story-caption">{image.caption}</span>
               <span className="work-story-arrow" aria-hidden="true"><FiArrowUpRight /></span>
-            </Link>
+            </button>
           ))}
         </div>
       </section>
+
+      {activeImage && (
+        <dialog
+          aria-describedby="work-lightbox-description"
+          aria-labelledby="work-lightbox-title"
+          className="work-lightbox"
+          onCancel={(event) => {
+            event.preventDefault()
+            closeGallery()
+          }}
+          onClick={(event) => {
+            if (event.target === dialogRef.current) closeGallery()
+          }}
+          onClose={() => {
+            setActiveImage(null)
+            galleryTriggerRef.current?.focus()
+          }}
+          onKeyDown={handleDialogKeyDown}
+          ref={dialogRef}
+        >
+          <div className="work-lightbox-content">
+            <div className="work-lightbox-header">
+              <div>
+                <p className="eyebrow">Representative image</p>
+                <h2 id="work-lightbox-title">{activeImage.category}</h2>
+              </div>
+              <button className="work-lightbox-close" onClick={closeGallery} type="button" aria-label="Close image viewer"><FiX aria-hidden="true" /></button>
+            </div>
+            <img src={activeImage.src} alt={activeImage.alt} decoding="async" />
+            <div className="work-lightbox-footer">
+              <p id="work-lightbox-description">{activeImage.caption}. This image illustrates the type of work and is not a customer project record.</p>
+              <div className="work-lightbox-actions">
+                <button onClick={() => moveGalleryImage(-1)} type="button">Previous</button>
+                <button onClick={() => moveGalleryImage(1)} type="button">Next</button>
+                <Link to={activeImage.to}>Explore service <FiArrowUpRight aria-hidden="true" /></Link>
+              </div>
+            </div>
+          </div>
+        </dialog>
+      )}
 
       <section className="work-expertise-section" aria-labelledby="work-expertise-heading">
         <div className="work-expertise-heading section-wrap" data-reveal>

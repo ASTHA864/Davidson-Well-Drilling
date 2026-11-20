@@ -9,7 +9,7 @@ function HomeServices() {
       <div className="dw-section-heading" data-reveal>
         <div>
           <p className="dw-eyebrow">Our services</p>
-          <h2 id="services-heading">Specialized Drilling. Reliable Solutions.</h2>
+          <h2 id="services-heading">Solutions That Start Beneath the Surface.</h2>
         </div>
         <Link className="dw-text-link" to="/services">
           All services <FiArrowUpRight aria-hidden="true" />

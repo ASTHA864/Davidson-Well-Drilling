@@ -24,7 +24,7 @@ function Footer() {
         <section className="dw-footer-cta" aria-labelledby="dw-footer-cta-heading">
           <div className="dw-footer-cta-copy">
             <p className="dw-footer-eyebrow">Talk with our team</p>
-            <h2 id="dw-footer-cta-heading">Ready to Start Your Next Project?</h2>
+            <h2 id="dw-footer-cta-heading">Let&apos;s Build Something Reliable.</h2>
             <p>From water well drilling to geothermal ground loop installation, we&apos;re ready to help.</p>
           </div>
           <div className="dw-footer-cta-actions">

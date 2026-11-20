@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { FiArrowUpRight } from 'react-icons/fi'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
+import ServiceIllustration from './ServiceIllustration.jsx'
 
 function InteractiveServiceExplorer({ services, idPrefix, className = '' }) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const rootRef = useRef(null)
   const tabRefs = useRef([])
   const indicatorRef = useRef(null)
   const panelContentRef = useRef(null)
@@ -49,7 +49,7 @@ function InteractiveServiceExplorer({ services, idPrefix, className = '' }) {
   }
 
   return (
-    <div className={`service-explorer ${className}`} data-reveal ref={rootRef}>
+    <div className={`service-explorer ${className}`} data-reveal>
       <div className="service-explorer-tabs" role="tablist" aria-label="Drilling service options">
         <span className="service-explorer-indicator" ref={indicatorRef} aria-hidden="true" />
         {services.map(({ number, title }, index) => (
@@ -96,7 +96,9 @@ function InteractiveServiceExplorer({ services, idPrefix, className = '' }) {
             Explore service <FiArrowUpRight aria-hidden="true" />
           </Link>
         </div>
-        <div className="service-explorer-orbit" aria-hidden="true"><span /><span /><span /></div>
+        <div className="service-explorer-visual" key={activeService.visual}>
+          <ServiceIllustration variant={activeService.visual} />
+        </div>
       </section>
     </div>
   )

@@ -26,33 +26,30 @@ function AboutUs() {
             </a>
           </div>
 
-          <figure className="about-hero-photo" data-reveal>
-            <img
-              src="/images/optimized/rural-drilling-rig.jpg"
-              alt="Representative image of drilling equipment in a rural field"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <div className="about-established-badge">
-              <span>Established</span>
-              <strong>1973</strong>
+          <aside className="about-company-record" data-reveal aria-label="Company history">
+            <div className="about-record-contours" aria-hidden="true">
+              <svg viewBox="0 0 520 360" focusable="false">
+                <path d="M24 104C106 38 183 45 260 100s146 60 236-8" />
+                <path d="M5 137c91-75 176-70 258-9s148 70 252 1" />
+                <path d="M-14 171c100-85 194-83 280-20s152 81 265 10" />
+                <path d="M-20 209c110-91 211-95 302-30s160 92 275 21" />
+                <path d="M-10 249c120-93 225-103 319-43s160 105 273 34" />
+              </svg>
             </div>
-            <figcaption>Representative image · Well drilling equipment</figcaption>
-          </figure>
+            <span className="about-record-index">DAVIDSON WELL DRILLING / 01</span>
+            <p className="about-record-year">1973</p>
+            <p className="about-record-caption">Established in Turnerville, Georgia.</p>
+            <div className="about-record-rule" aria-hidden="true" />
+            <div className="about-record-details">
+              <span>Family-owned</span>
+              <span>Locally operated</span>
+            </div>
+          </aside>
         </div>
       </section>
 
       <section className="about-story" id="our-story" aria-labelledby="about-story-title">
         <div className="about-story-inner">
-          <figure className="about-story-photo" data-reveal>
-            <img
-              src="/images/optimized/geothermal-ground-loop-installation.jpg"
-              alt="Representative image illustrating geothermal ground loop installation work"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Representative image · Ground loop installation</figcaption>
-          </figure>
           <div className="about-story-copy" data-reveal>
             <p className="eyebrow">Our story</p>
             <h2 id="about-story-title">
@@ -75,6 +72,12 @@ function AboutUs() {
               Family-owned and operated since 1973.
             </p>
           </div>
+          <aside className="about-story-principle" data-reveal>
+            <span className="about-story-principle-label">A practical approach</span>
+            <p>Every site is different.</p>
+            <span className="about-story-principle-rule" aria-hidden="true" />
+            <span className="about-story-principle-note">Project scope is shaped by local conditions and clear coordination.</span>
+          </aside>
         </div>
       </section>
 
@@ -158,7 +161,14 @@ function AboutUs() {
       </section>
 
       <div className="about-closing">
-        
+        <div className="section-wrap">
+          <ProjectInvitation
+            eyebrow="Rooted in the region"
+            title="Let’s talk about your project."
+            description="Contact Davidson Well Drilling to discuss your location, project goals, and next steps."
+            actionLabel="Contact our team"
+          />
+        </div>
       </div>
     </main>
   )
