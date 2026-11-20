@@ -1,34 +1,72 @@
 export const faqItems = [
   {
-    question: 'What services does Davidson Well Drilling provide?',
-    answer: 'Davidson Well Drilling provides drilled water wells, residential and commercial well systems, hydrofracturing, geothermal ground loop drilling and installation, pump sales and service, trenching, excavation, and well abandonment.',
+    question: 'Where is Davidson Well Drilling based?',
+    answer: 'Davidson Well Drilling is based in Turnerville, Georgia, and serves Northeast Georgia and Western South Carolina.',
+    category: 'general',
   },
   {
-    question: 'How deep will my water well need to be?',
-    answer: 'Well depth depends on the geology and water conditions at each property. In surrounding areas, casing to bedrock is commonly around 70 to 100 feet. That is a regional reference, not a guaranteed depth for your property.',
+    question: 'When was Davidson Well Drilling established?',
+    answer: 'Davidson Well Drilling is a family-owned and operated business serving the region since 1973.',
+    category: 'general',
   },
   {
-    question: 'Can hydrofracturing improve a low-yield well?',
-    answer: 'In some cases, hydrofracturing may help improve the flow of an underperforming well by injecting water under pressure to clean or open existing water-bearing fractures. Results depend on the well and its geology, and are not guaranteed.',
+    question: 'Which pumps does Davidson carry and service?',
+    answer: 'Davidson carries, services, and installs Franklin Electric submersible pumps for water well systems. Contact the team about current availability.',
+    category: 'general',
   },
   {
-    question: 'What is used during Davidson Well Drilling’s hydrofracturing process?',
-    answer: 'Davidson uses clean water without additives for hydrofracturing. Ask the team about the proposed work for your specific well before work begins.',
+    question: 'How deep will a water well need to be?',
+    answer: 'Well depth and casing requirements depend on the local geology and water conditions at the property. Davidson can discuss the requirements for your site.',
+    category: 'water-well',
   },
   {
-    question: 'Does Davidson install complete geothermal heating and cooling systems?',
-    answer: 'Davidson provides drilling and down-hole installation of vertical geothermal ground loop systems and can coordinate with your geothermal or heating-and-air contractor. Contact the team to confirm the scope for your project.',
+    question: 'Does Davidson drill residential and commercial water wells?',
+    answer: 'Davidson provides drilled water wells and well systems for residential and commercial water supply.',
+    category: 'water-well',
   },
   {
-    question: 'Which pumps do you carry or service?',
-    answer: 'Davidson carries, services, and installs Franklin Electric submersible pumps. Contact the team to discuss your application and current availability.',
+    question: 'What is hydrofracturing?',
+    answer: 'Hydrofracturing uses water injected under pressure in an existing well to help clear or open water-bearing fractures.',
+    category: 'hydrofracturing',
   },
   {
-    question: 'Do you provide water testing, filtration, or well water treatment?',
-    answer: 'Davidson does not currently offer water testing, treatment, or maintenance. Contact the team to ask about current service availability or referrals.',
+    question: 'Can hydrofracturing guarantee more water flow?',
+    answer: 'No. It may be considered for some low-yield wells, but the result depends on the well and its geology. Improved flow is not guaranteed.',
+    category: 'hydrofracturing',
   },
   {
-    question: 'Do you provide pump service and well abandonment?',
-    answer: 'Pump sales and service and well abandonment are listed among the company’s services. The appropriate work depends on the site and system; contact the team to discuss your needs.',
+    question: 'Does Davidson use additives for hydrofracturing?',
+    answer: 'Davidson describes its hydrofracturing process as using clean water without additives.',
+    category: 'hydrofracturing',
+  },
+  {
+    question: 'What work does Davidson provide for geothermal ground loops?',
+    answer: 'Davidson provides vertical ground loop drilling and down-hole installation, including the transfer medium listed for this service.',
+    category: 'geothermal',
+  },
+  {
+    question: 'Who designs and installs the complete HVAC system?',
+    answer: 'The geothermal or HVAC contractor handles the system design, equipment, and complete HVAC installation. Davidson coordinates the drilling and down-hole installation scope with the project team.',
+    category: 'geothermal',
+  },
+  {
+    question: 'What does down-hole installation include?',
+    answer: 'Down-hole installation supports the vertical ground loop. Confirm the transfer medium and other project-specific details with Davidson and your geothermal or HVAC contractor.',
+    category: 'geothermal',
+  },
+  {
+    question: 'What does vertical ground loop drilling involve?',
+    answer: 'It is drilling for vertical geothermal loops as part of a system planned with a geothermal or HVAC contractor.',
+    category: 'geothermal',
   },
 ]
+
+export const faqCategories = [
+  { id: 'general', label: 'General Questions' },
+  { id: 'water-well', label: 'Water Well Drilling' },
+  { id: 'hydrofracturing', label: 'Hydrofracturing' },
+  { id: 'geothermal', label: 'Geothermal Ground Loop Systems' },
+].map((category) => ({
+  ...category,
+  items: faqItems.filter((item) => item.category === category.id),
+}))

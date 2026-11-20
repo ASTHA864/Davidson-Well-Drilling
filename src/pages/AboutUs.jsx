@@ -1,34 +1,61 @@
-import { FiCheck, FiDroplet, FiHeart } from 'react-icons/fi'
-import HeroSection from '../components/HeroSection.jsx'
-import CTASection from '../components/CTASection.jsx'
+import { useRef } from 'react'
+import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
 
 function AboutUs() {
+  const pageRef = useRef(null)
+  useGsapScrollReveal(pageRef)
+
   return (
-    <main>
-      <HeroSection eyebrow="About Davidson Well Drilling" title="A family business, rooted here." description="Serving Northeast Georgia and Western South Carolina with well drilling and water system services since 1973." image="/images/header02.jpg" secondaryLabel="Talk with us" secondaryTo="/contact" compact />
-      <section className="section-wrap about-story">
-        <div className="about-story-image"><img src="/images/0001.jpg" alt="Davidson Well Drilling crew and well drilling equipment" loading="lazy" /><span>Serving our community since 1973</span></div>
-        <div className="detail-copy">
-          <p className="eyebrow">Our story</p>
-          <h2>Built on local knowledge and word of mouth.</h2>
-          <p>Davidson Well Drilling is a family-owned and operated business serving Northeast Georgia and Western South Carolina since 1973. Over the years, satisfied customers and word of mouth have helped the business grow.</p>
-          <p>Based in Turnerville, Georgia, the company provides drilled water wells, residential and commercial well systems, pump sales and service, hydrofracturing, and geothermal ground loop drilling and installation.</p>
-          <p>Barry Davidson is Baroid-certified for geothermal ground loop installation. Davidson Well Drilling is licensed in Georgia and South Carolina and fully insured.</p>
+    <main className="editorial-page about-page" ref={pageRef}>
+      <section className="editorial-intro about-intro">
+        <p className="eyebrow" data-reveal>About Davidson Well Drilling</p>
+        <h1 data-reveal>
+          Family-owned.
+          <span>Serving our region since 1973.</span>
+        </h1>
+        <p className="editorial-lede" data-reveal>
+          Davidson Well Drilling, Inc. is based in Turnerville, Georgia, and
+          serves Northeast Georgia and Western South Carolina.
+        </p>
+      </section>
+
+      <section className="identity-section" aria-labelledby="identity-heading">
+        <div className="identity-inner">
+          <p className="eyebrow" data-reveal>Company identity</p>
+          <h2 id="identity-heading" data-reveal>
+            Rooted in our community.
+            <span>Focused on dependable work.</span>
+          </h2>
+          <div className="identity-copy" data-reveal>
+            <p>
+              Established in 1973, Davidson is a family-owned and operated
+              business serving homeowners and businesses across its local
+              service area.
+            </p>
+            <p>
+              The company values quality workmanship, clear communication, and
+              project-specific planning. For geothermal work, Davidson
+              coordinates drilling and installation with the customer and
+              their geothermal or HVAC contractor.
+            </p>
+            <span className="identity-since">Family-owned and operated since <strong>1973</strong></span>
+          </div>
         </div>
       </section>
-      <section className="section-band">
-        <div className="section-wrap values-grid">
-          <div><p className="eyebrow">What guides our work</p><h2>Our neighbors deserve thoughtful service.</h2><p>Our customers are our neighbors, friends, and family. We listen to what you need and work to provide thoughtful, reliable service.</p></div>
-          <div className="value-card"><FiHeart aria-hidden="true" /><h3>Personal service</h3><p>A family-owned team serving its local communities.</p></div>
-          <div className="value-card"><FiDroplet aria-hidden="true" /><h3>Practical expertise</h3><p>Well systems, pump work, hydrofracturing, and geothermal loop installation.</p></div>
-          <div className="value-card"><FiCheck aria-hidden="true" /><h3>Professional commitment</h3><p>Licensed in Georgia and South Carolina, and fully insured.</p></div>
+
+      <section className="approach-section" aria-labelledby="approach-heading">
+        <div className="approach-inner">
+          <div className="approach-heading" data-reveal>
+            <p className="eyebrow">Our values and approach</p>
+            <h2 id="approach-heading">Local knowledge.<br /><span>Thoughtful coordination.</span></h2>
+          </div>
+          <div className="approach-points">
+            <p data-reveal><span>01</span> Family-owned, with roots in Turnerville, Georgia.</p>
+            <p data-reveal><span>02</span> Serving Northeast Georgia and Western South Carolina.</p>
+            <p data-reveal><span>03</span> Coordinating geothermal drilling scope with customers and HVAC contractors.</p>
+          </div>
         </div>
       </section>
-      <section className="section-wrap about-gallery">
-        <div><p className="eyebrow">Our work</p><h2>Experience, out in the field.</h2></div>
-        <div className="about-gallery-images"><img src="/images/0004.jpg" alt="Well drilling equipment" loading="lazy" /><img src="/images/0005.jpg" alt="Drilling truck on a project site" loading="lazy" /><img src="/images/header01.jpg" alt="Davidson Well Drilling equipment" loading="lazy" /></div>
-      </section>
-      <CTASection title="Let’s talk about your water needs." text="Call or send us a message to discuss well drilling, pump service, or ground loop installation." />
     </main>
   )
 }

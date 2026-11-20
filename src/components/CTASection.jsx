@@ -1,7 +1,7 @@
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-function CTASection({ title = 'Let’s talk about your project.', text = 'Tell us what you need and our team can help you explore the next steps.', image = '/images/header02.jpg' }) {
+function CTASection({ title = 'Let’s talk about your project.', text = 'Tell us what you need and our team can help you explore the next steps.', image = '/images/optimized/rural-drilling-rig.jpg' }) {
   return (
     <section className="cta-section" style={{ backgroundImage: `linear-gradient(90deg, rgba(8, 36, 61, .95), rgba(8, 36, 61, .72)), url("${image}")` }}>
       <div className="section-wrap cta-inner">

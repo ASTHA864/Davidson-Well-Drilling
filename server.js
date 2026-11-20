@@ -51,13 +51,14 @@ async function handleContact(request, response) {
   const email = typeof data.email === 'string' ? data.email.trim() : ''
   const phone = typeof data.phone === 'string' ? data.phone.trim() : ''
   const service = typeof data.service === 'string' ? data.service.trim() : ''
+  const subject = typeof data.subject === 'string' ? data.subject.trim() : ''
   const message = typeof data.message === 'string' ? data.message.trim() : ''
 
-  if (!name || name.length > 120 || !email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || phone.length > 40 || !service || !message || message.length > 5000) {
-    return respond(response, 400, { error: 'Please provide a valid name, email, service, and message.' })
+  if (!name || name.length > 120 || !email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || phone.length > 40 || !service || !subject || subject.length > 160 || !message || message.length > 5000) {
+    return respond(response, 400, { error: 'Please provide a valid name, email, service, subject, and message.' })
   }
 
-  const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nService: ${service}\n\nMessage:\n${message}`
+  const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nService: ${service}\nSubject: ${subject}\n\nMessage:\n${message}`
   try {
     await mailer.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,

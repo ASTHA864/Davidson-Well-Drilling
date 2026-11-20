@@ -1,24 +1,44 @@
-import { Link } from 'react-router-dom'
-import { FiArrowRight } from 'react-icons/fi'
-import HeroSection from '../components/HeroSection.jsx'
-import FAQAccordion from '../components/FAQAccordion.jsx'
-import CTASection from '../components/CTASection.jsx'
-import { faqItems } from '../data/faqs.js'
+import { useRef } from 'react'
+import FAQCategoryExplorer from '../components/FAQCategoryExplorer.jsx'
+import ProjectInvitation from '../components/ProjectInvitation.jsx'
+import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
+import { faqCategories } from '../data/faqs.js'
 
 function FAQ() {
+  const pageRef = useRef(null)
+  useGsapScrollReveal(pageRef)
+
   return (
-    <main>
-      <HeroSection eyebrow="Questions & answers" title="A few things you may be wondering." description="Helpful information about wells, pumps, hydrofracturing, and geothermal ground loops." image="/images/header01.jpg" secondaryLabel="Ask a question" secondaryTo="/contact" compact />
-      <section className="section-wrap faq-page">
-        <div className="faq-sidebar">
-          <p className="eyebrow">Frequently asked questions</p>
-          <h2>Clear answers.<br />No guesswork.</h2>
-          <p>Every property and well is different. For advice about your specific site or system, contact Davidson Well Drilling directly.</p>
-          <Link className="text-link" to="/contact">Still have questions? <FiArrowRight aria-hidden="true" /></Link>
+    <main className="redesigned-faq-page" ref={pageRef}>
+      <header className="faq-hero">
+        <div className="faq-hero-orb faq-hero-orb-one" aria-hidden="true" />
+        <div className="faq-hero-orb faq-hero-orb-two" aria-hidden="true" />
+        <div className="faq-hero-content" data-reveal>
+          <p className="eyebrow"><span className="faq-hero-dot" aria-hidden="true" />Questions, clearly answered</p>
+          <h1>Everything You <span>Need to Know.</span></h1>
+          <p>Find answers to common questions about our drilling services, geothermal solutions, and installation work.</p>
+          <div className="faq-hero-meta">
+            <span>DAVIDSON WELL DRILLING</span>
+            <span aria-hidden="true" />
+            <span>04 TOPICS</span>
+          </div>
         </div>
-        <FAQAccordion items={faqItems} searchable />
-      </section>
-      <CTASection title="Have a question about your well?" text="Call us or send a message. We’ll be glad to hear what you’re working on." />
+        <div className="faq-hero-mark" aria-hidden="true">
+          <span>DW</span>
+          <i>EST. 1973</i>
+        </div>
+      </header>
+
+      <FAQCategoryExplorer categories={faqCategories} />
+
+      <div className="faq-contact-wrap">
+        <ProjectInvitation
+          eyebrow="Questions & support"
+          title="Still Have Questions?"
+          description="Get in touch with Davidson Well Drilling to discuss your drilling or geothermal requirements."
+          actionLabel="Contact Us"
+        />
+      </div>
     </main>
   )
 }

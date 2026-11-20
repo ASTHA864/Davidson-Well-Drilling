@@ -1,23 +1,28 @@
 import { useEffect } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import Services from './pages/Services.jsx'
+import WaterWellDrilling from './pages/WaterWellDrilling.jsx'
 import HydroFracturing from './pages/HydroFracturing.jsx'
-import GeothermalProducts from './pages/GeothermalProducts.jsx'
+import GeothermalGroundLoops from './pages/GeothermalGroundLoops.jsx'
 import AboutUs from './pages/AboutUs.jsx'
+import OurWork from './pages/OurWork.jsx'
 import FAQ from './pages/FAQ.jsx'
 import Contact from './pages/Contact.jsx'
 import './App.css'
 
 const pageMetadata = {
   '/': ['Davidson Well Drilling | Northeast Georgia & Western South Carolina', 'Family-owned well drilling, pump service, hydrofracturing, and geothermal ground loop installation serving Northeast Georgia and Western South Carolina since 1973.'],
-  '/services': ['Well Drilling & Pump Services | Davidson Well Drilling', 'Explore water well drilling, well systems, pump sales and service, hydrofracturing, geothermal loop drilling, trenching, excavation, and well abandonment.'],
-  '/hydro-fracturing': ['Hydro-Fracturing | Davidson Well Drilling', 'Learn how water-only hydrofracturing can help restore flow in some low-yield wells. Contact Davidson Well Drilling to discuss your well.'],
-  '/geothermal-products': ['Geothermal Ground Loops & Pumps | Davidson Well Drilling', 'Davidson Well Drilling provides vertical geothermal ground loop drilling and down-hole installation, and carries, services, and installs Franklin Electric submersible pumps.'],
+  '/index.html': ['Davidson Well Drilling | Northeast Georgia & Western South Carolina', 'Family-owned well drilling, pump service, hydrofracturing, and geothermal ground loop installation serving Northeast Georgia and Western South Carolina since 1973.'],
+  '/services': ['Drilling Services | Davidson Well Drilling', 'Explore water well drilling, hydrofracturing, geothermal ground loop drilling, and pump sales and service from Davidson Well Drilling.'],
+  '/water-well-drilling': ['Water Well Drilling | Davidson Well Drilling', 'Drilled water wells and well systems for residential and commercial water supply in Northeast Georgia and Western South Carolina.'],
+  '/hydro-fracturing': ['Hydrofracturing | Davidson Well Drilling', 'Learn when water-only hydrofracturing may be considered for a low-yield well. Results depend on well conditions and are not guaranteed.'],
+  '/geothermal-ground-loops': ['Geothermal Ground Loop Systems | Davidson Well Drilling', 'Learn about vertical ground loop drilling, down-hole installation, transfer medium, and coordination with geothermal or HVAC contractors.'],
   '/about-us': ['About Davidson Well Drilling | Serving Since 1973', 'Meet Davidson Well Drilling, a family-owned and operated business serving Northeast Georgia and Western South Carolina since 1973.'],
-  '/faq': ['Well Drilling FAQs | Davidson Well Drilling', 'Answers to common questions about well drilling, hydrofracturing, geothermal ground loops, pumps, and services.'],
+  '/our-work': ['Our Work | Davidson Well Drilling', 'Representative images illustrate water well drilling and geothermal ground loop services offered by Davidson Well Drilling.'],
+  '/faqs': ['FAQs | Davidson Well Drilling', 'Answers to common questions about Davidson Well Drilling, water wells, hydrofracturing, and geothermal ground loop systems.'],
   '/contact': ['Contact Davidson Well Drilling', 'Contact Davidson Well Drilling in Turnerville, Georgia for well drilling, pump service, hydrofracturing, or geothermal ground loop installation.'],
 }
 
@@ -30,10 +35,10 @@ function LegacyHashRedirect() {
       '#services': '/services',
       '#hydrofrac': '/hydro-fracturing',
       '#hydro-fracturing': '/hydro-fracturing',
-      '#geothermal': '/geothermal-products',
-      '#products': '/geothermal-products',
+      '#geothermal': '/geothermal-ground-loops',
+      '#products': '/services#additional-services',
       '#about': '/about-us',
-      '#faq': '/faq',
+      '#faq': '/faqs',
       '#contact': '/contact',
     }
     const destination = oldRoutes[location.hash.toLowerCase()]
@@ -60,6 +65,14 @@ function PageMetadata() {
       document.head.append(descriptionTag)
     }
     descriptionTag.content = description
+    let canonicalTag = document.querySelector('link[rel="canonical"]')
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link')
+      canonicalTag.rel = 'canonical'
+      document.head.append(canonicalTag)
+    }
+    const canonicalPath = pathname === '/index.html' ? '/' : pathname
+    canonicalTag.href = new URL(canonicalPath, window.location.origin).href
   }, [pathname])
 
   return null
@@ -82,7 +95,7 @@ function NotFound() {
       <p className="eyebrow">404 · Page not found</p>
       <h1>Looks like this trail ran dry.</h1>
       <p>The page you’re looking for isn’t here. Head back home or get in touch with our team.</p>
-      <a className="button button-primary" href="/">Back to home</a>
+      <Link className="button button-primary" to="/">Back to home</Link>
     </main>
   )
 }
@@ -98,10 +111,17 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/index.html" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/water-well-drilling" element={<WaterWellDrilling />} />
         <Route path="/hydro-fracturing" element={<HydroFracturing />} />
-        <Route path="/geothermal-products" element={<GeothermalProducts />} />
+        <Route path="/geothermal-ground-loops" element={<GeothermalGroundLoops />} />
+        <Route path="/ground-loop-systems" element={<Navigate to="/geothermal-ground-loops" replace />} />
+        <Route path="/vertical-ground-loop-drilling" element={<Navigate to="/geothermal-ground-loops#vertical-drilling" replace />} />
+        <Route path="/down-hole-installation" element={<Navigate to="/geothermal-ground-loops#down-hole-installation" replace />} />
+        <Route path="/geothermal-products" element={<Navigate to="/services#additional-services" replace />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/faq" element={<FAQ />} />
+        <Route path="/our-work" element={<OurWork />} />
+        <Route path="/faq" element={<Navigate to="/faqs" replace />} />
+        <Route path="/faqs" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,46 +1,112 @@
-import { FiDroplet, FiActivity, FiCheckCircle } from 'react-icons/fi'
-import HeroSection from '../components/HeroSection.jsx'
-import CTASection from '../components/CTASection.jsx'
-import FAQAccordion from '../components/FAQAccordion.jsx'
+import { useRef } from 'react'
+import { FiArrowDownRight, FiDroplet, FiInfo, FiShield } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
+import RelatedServices from '../components/RelatedServices.jsx'
+import ServiceFAQSection from '../components/ServiceFAQSection.jsx'
+import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
 
 const hydroFaqs = [
-  { question: 'Will hydrofracturing restore my well?', answer: 'It may help some low-yield wells, but the result depends on the well’s condition and geology. An evaluation is needed, and improvement is not guaranteed.' },
-  { question: 'Are additives used?', answer: 'Davidson uses clean water without additives. Ask the team about the proposed work for your well.' },
-  { question: 'Do I need a new well instead?', answer: 'Not necessarily. The company describes hydrofracturing as a possible option for some underperforming wells. Davidson can discuss whether it may be appropriate for your situation.' },
+  {
+    question: 'Will hydrofracturing restore my well?',
+    answer: 'It may help some low-yield wells, but the result depends on the well’s condition and geology. Improvement is not guaranteed.',
+  },
+  {
+    question: 'Are additives used?',
+    answer: 'Davidson uses clean water without additives. Ask the team about the proposed work for your well.',
+  },
+  {
+    question: 'Is hydrofracturing right for every well?',
+    answer: 'No. The service may be considered for some underperforming wells. An evaluation of the existing well is needed to discuss whether it may be appropriate.',
+  },
+]
+
+const hydroConsiderations = [
+  { icon: FiInfo, title: 'Existing well conditions', text: 'Hydrofracturing may be considered for some low-yield wells, depending on the well and local geology.' },
+  { icon: FiShield, title: 'No guaranteed outcome', text: 'Every well is different. Increased flow or improved performance is not guaranteed.' },
 ]
 
 function HydroFracturing() {
+  const pageRef = useRef(null)
+  useGsapScrollReveal(pageRef)
+
   return (
-    <main>
-      <HeroSection eyebrow="Well improvement service" title="A fresh approach to low-yield wells." description="Hydrofracturing uses pressurized water in an existing well. In some cases, it may help improve water flow without drilling a new well." image="/images/header01.jpg" secondaryLabel="Explore services" secondaryTo="/services" compact />
-      <section className="section-wrap detail-intro">
-        <div className="detail-copy">
-          <p className="eyebrow">Understanding hydrofracturing</p>
-          <h2>What is hydrofracturing?</h2>
-          <p>After a well is drilled, silt or mineral deposits can build up around water-producing fractures in the rock. Hydrofracturing is a well-development process in which water is injected at pressure to help clear or open existing fractures and improve flow.</p>
-          <p>Davidson uses a water-only process, without additives. Whether it may help depends on the well’s construction and local geology, so outcomes are not guaranteed.</p>
-          <p>This service is for existing water wells; it is different from oil and gas extraction. Contact the team to discuss the condition and history of your well.</p>
+    <main className="service-detail-page hydro-page" ref={pageRef}>
+      <header className="hydro-hero">
+        <div className="hydro-hero-copy" data-reveal>
+          <p className="eyebrow">Existing well service · Hydrofracturing</p>
+          <h1>Improving Well Performance <span>Through Hydrofracturing.</span></h1>
+          <p className="service-detail-lede">
+            A water-only process that may help some low-yield wells. Results depend on well conditions and are not guaranteed.
+          </p>
+          <Link className="hydro-hero-link" to="#hydro-process">Understand the process <FiArrowDownRight aria-hidden="true" /></Link>
         </div>
-        <figure className="detail-photo"><img src="/images/hydro-frac01.jpg" alt="Hydrofracturing equipment used during well service" loading="lazy" /><figcaption>Hydrofracturing equipment</figcaption></figure>
+        <div className="hydro-water-mark" aria-hidden="true">
+          <span className="hydro-water-ring hydro-water-ring-one" />
+          <span className="hydro-water-ring hydro-water-ring-two" />
+          <FiDroplet />
+          <small>WATER<br />ONLY</small>
+        </div>
+      </header>
+
+      <section className="hydro-introduction section-wrap" data-reveal>
+        <div className="hydro-intro-index">01 <span>/ 05</span></div>
+        <div>
+          <p className="eyebrow">What is hydrofracturing?</p>
+          <h2>A well-development option for some low-yield wells.</h2>
+        </div>
+        <p>
+          Hydrofracturing uses water injected under pressure in an existing well to help clear or open water-bearing fractures. Davidson uses clean water without additives. Whether it may help depends on the well’s construction, condition, and local geology.
+        </p>
       </section>
-      <section className="section-band">
-        <div className="section-wrap">
-          <div className="section-heading-row">
-            <div><p className="eyebrow">The process</p><h2>A careful, well-specific approach.</h2></div>
-            <p className="section-heading-note">The exact work depends on the existing well. A site discussion helps establish whether hydrofracturing may be an option.</p>
+
+      <section className="hydro-process-section" id="hydro-process" aria-labelledby="hydro-process-heading">
+        <div className="hydro-process-inner">
+          <div className="hydro-process-heading" data-reveal>
+            <p className="eyebrow">02 / How the process works</p>
+            <h2 id="hydro-process-heading">Start with the well you already have.</h2>
+            <p>Discuss the well’s history and conditions with Davidson before deciding whether hydrofracturing is worth considering.</p>
           </div>
-          <div className="process-grid">
-            <article><span className="process-number">01</span><FiActivity aria-hidden="true" /><h3>Discuss the well</h3><p>Share what you know about its construction, performance, and recent water-flow changes.</p></article>
-            <article><span className="process-number">02</span><FiDroplet aria-hidden="true" /><h3>Assess suitability</h3><p>Hydrofracturing is considered for some underperforming wells; it isn’t appropriate for every well.</p></article>
-            <article><span className="process-number">03</span><FiCheckCircle aria-hidden="true" /><h3>Review next steps</h3><p>The team can explain the proposed work and its limitations before you decide how to proceed.</p></article>
+          <div className="hydro-process-rail">
+            <span className="hydro-process-line" aria-hidden="true" />
+            <article data-reveal>
+              <span className="hydro-process-step">A</span>
+              <div><h3>Talk through the well</h3><p>Share what you know about its construction and changes in water flow.</p></div>
+            </article>
+            <article data-reveal>
+              <span className="hydro-process-step">B</span>
+              <div><h3>Water-only process</h3><p>Water is injected under pressure to help clear or open existing water-bearing fractures. No additives are used.</p></div>
+            </article>
+            <article data-reveal>
+              <span className="hydro-process-step">C</span>
+              <div><h3>Review the limitations</h3><p>Discuss the proposed work and understand that improved water flow is not guaranteed.</p></div>
+            </article>
           </div>
         </div>
       </section>
-      <section className="section-wrap detail-faq">
-        <div><p className="eyebrow">Good to know</p><h2>Hydrofracturing questions.</h2><p>Have a question about your well? Call or send a note with what you know about it.</p><a className="button button-outline" href="tel:+17067546033">(706) 754-6033</a></div>
-        <FAQAccordion items={hydroFaqs} />
+
+      <section className="hydro-considerations" aria-labelledby="hydro-considerations-heading">
+        <div className="hydro-considerations-heading" data-reveal>
+          <p className="eyebrow">03 / When it may be considered</p>
+          <h2 id="hydro-considerations-heading">When it may be considered.</h2>
+          <p>Hydrofracturing is a possible service for some low-yield wells—not a promise of a particular result.</p>
+        </div>
+        <div className="hydro-consideration-grid">
+          {hydroConsiderations.map(({ icon: Icon, title, text }) => (
+            <article className="hydro-consideration-card glass-panel" data-reveal key={title}>
+              <Icon aria-hidden="true" />
+              <span>{title}</span>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
       </section>
-      <CTASection title="Could hydrofracturing help your well?" text="Talk with Davidson Well Drilling about your well’s history and available options." image="/images/hydro-frac01.jpg" />
+
+      <ServiceFAQSection
+        description="Straightforward answers about the hydrofracturing process and its limits."
+        items={hydroFaqs}
+        title="Hydrofracturing questions."
+      />
+      <RelatedServices current="/hydro-fracturing" />
     </main>
   )
 }

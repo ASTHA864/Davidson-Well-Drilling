@@ -40,18 +40,17 @@ function ContactForm({ compact = false }) {
         <label><span className="field-label">Full name <span aria-hidden="true">*</span></span><input autoComplete="name" name="name" required placeholder="Your name" /></label>
         <label><span className="field-label">Email address <span aria-hidden="true">*</span></span><input autoComplete="email" name="email" type="email" required placeholder="you@example.com" /></label>
         <label><span className="field-label">Phone number</span><input autoComplete="tel" name="phone" type="tel" placeholder="(555) 555-5555" /></label>
-        <label><span className="field-label">Service required</span>
+        <label><span className="field-label">Service interested in <span aria-hidden="true">*</span></span>
           <select name="service" defaultValue="" required>
             <option value="">Select a service</option>
-            <option>Water well drilling</option>
+            <option>Water Well Drilling</option>
+            <option>Pump Sales &amp; Service</option>
             <option>Hydrofracturing</option>
-            <option>Geothermal ground loop</option>
-            <option>Pump sales or service</option>
-            <option>Commercial or residential well system</option>
-            <option>Trenching, excavation, or well abandonment</option>
-            <option>Other / not sure</option>
+            <option>Geothermal Ground Loop Systems</option>
+            <option>Other / Not Sure</option>
           </select>
         </label>
+        <label className="form-subject"><span className="field-label">Subject <span aria-hidden="true">*</span></span><input name="subject" required maxLength="160" placeholder="How can we help?" /></label>
         <label className="form-message"><span className="field-label">Message <span aria-hidden="true">*</span></span><textarea name="message" rows="5" required placeholder="Tell us a little about your project" /></label>
       </div>
       <div className="form-submit-row">

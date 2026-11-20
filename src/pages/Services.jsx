@@ -1,37 +1,74 @@
-import { FiArrowRight, FiBriefcase, FiDroplet, FiLayers, FiMap, FiTool, FiTrendingUp } from 'react-icons/fi'
+import { useRef } from 'react'
+import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-import HeroSection from '../components/HeroSection.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
-import CTASection from '../components/CTASection.jsx'
+import useGsapScrollReveal from '../hooks/useGsapScrollReveal.js'
+import { drillingServices } from '../data/drillingServices.js'
 
-const services = [
-  { icon: FiDroplet, title: 'Drilled Water Wells', description: 'Six-inch drilled water wells for residential and commercial water supply. In surrounding areas, casing to bedrock is commonly around 70–100 feet; actual depth varies by property.', to: '/contact#quote' },
-  { icon: FiBriefcase, title: 'Residential & Commercial Systems', description: 'Complete water well systems for homes, businesses, and commercial properties.', to: '/contact#quote' },
-  { icon: FiTrendingUp, image: '/images/hydro-frac01.jpg', title: 'Hydrofracturing', description: 'Water-only hydrofracturing may help improve flow in certain low-yield wells. Results depend on well conditions.', to: '/hydro-fracturing' },
-  { icon: FiLayers, image: '/images/geotherm.jpg', title: 'Geothermal Ground Loops', description: 'Vertical ground loop drilling and down-hole installation, coordinated with your geothermal or HVAC contractor.', to: '/geothermal-products' },
-  { icon: FiTool, image: '/images/0002.jpg', title: 'Pump Sales & Service', description: 'Franklin Electric submersible pumps are carried, serviced, and installed by the company.', to: '/geothermal-products' },
-  { icon: FiMap, image: '/images/0004.jpg', title: 'Trenching & Excavating', description: 'Trenching and excavation work are part of the company’s listed well-related services.', to: '/contact#quote' },
-  { icon: FiDroplet, title: 'Well Abandonment', description: 'Proper abandonment is important for protecting groundwater. Contact the team to discuss your specific well and local requirements.', to: '/contact#quote' },
+const additionalServices = [
+  {
+    title: 'Pump Sales & Service',
+    description: 'Davidson carries, services, and installs Franklin Electric submersible pumps for water well systems.',
+  },
+  {
+    title: 'Wellhead finishing stones',
+    description: 'Rocks for dressing up a wellhead; contact the team to ask about available options.',
+  },
 ]
 
 function Services() {
+  const pageRef = useRef(null)
+  useGsapScrollReveal(pageRef)
+
   return (
-    <main>
-      <HeroSection eyebrow="Our services" title="Grounded in good work." description="Well drilling, pump service, hydrofracturing, and more for homes and businesses across our service area." image="/images/header02.jpg" secondaryLabel="Contact us" secondaryTo="/contact" compact />
-      <section className="section-wrap page-intro">
-        <p className="eyebrow">How we can help</p>
-        <h2>Practical solutions for your property.</h2>
-        <p>Our services cover water wells, well systems, pumps, and vertical geothermal ground loops. Tell us about your project and we can discuss the scope with you.</p>
+    <main className="service-explorer-page" ref={pageRef}>
+      <header className="service-explorer-hero">
+        <div className="service-explorer-hero-inner" data-reveal>
+          <p className="eyebrow">Davidson Well Drilling · Since 1973</p>
+          <h1>Drilling services <span>for your project.</span></h1>
+          <p>Explore Davidson’s water well, hydrofracturing, and geothermal ground loop services.</p>
+        </div>
+        <div className="service-hero-light" aria-hidden="true" />
+      </header>
+
+      <section className="service-explorer-main">
+        <div className="service-explorer-section-heading" data-reveal>
+          <div>
+            <p className="eyebrow">Three core services</p>
+            <h2>Choose the service <span>that fits your needs.</span></h2>
+          </div>
+          <p>Site conditions and project requirements vary. Contact Davidson Well Drilling to discuss your property and scope.</p>
+        </div>
+        <div className="service-grid services-primary-grid">
+          {drillingServices.map(({ icon, title, description, to }) => (
+            <ServiceCard
+              description={description}
+              icon={icon}
+              key={to}
+              title={title}
+              to={to}
+              linkLabel="Learn more"
+            />
+          ))}
+        </div>
       </section>
-      <section className="section-wrap services-page-grid">
-        {services.map((service) => <ServiceCard key={service.title} {...service} />)}
+
+      <section className="additional-services-section" id="additional-services" data-reveal>
+        <div className="additional-services-heading">
+          <p className="eyebrow">Additional services</p>
+          <h2>Support for well systems.</h2>
+          <p>Contact the team to discuss current availability and your project requirements.</p>
+        </div>
+        <ul className="additional-services-list">
+          {additionalServices.map(({ title, description }, index) => (
+            <li className="additional-service-item" key={title}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div><strong>{title}</strong><p>{description}</p></div>
+            </li>
+          ))}
+        </ul>
+        <Link className="additional-services-link" to="/contact#quote">Ask about additional services <FiArrowUpRight aria-hidden="true" /></Link>
       </section>
-      <section className="service-note section-wrap">
-        <div className="service-note-icon"><FiDroplet aria-hidden="true" /></div>
-        <div><h2>Looking for water treatment or testing?</h2><p>Davidson does not currently offer water testing, treatment, or maintenance. Contact the team to confirm current availability or ask about referrals.</p></div>
-        <Link className="text-link" to="/contact">Contact us <FiArrowRight aria-hidden="true" /></Link>
-      </section>
-      <CTASection />
     </main>
   )
 }

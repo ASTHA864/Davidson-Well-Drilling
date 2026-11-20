@@ -12,16 +12,24 @@ function Footer() {
             <span className="brand-mark" aria-hidden="true"><span /></span>
             <span className="brand-copy"><strong>Davidson</strong><small>WELL DRILLING, INC.</small></span>
           </Link>
-          <p>Fresh water, dependable service, and ground loop installation from a family-owned team serving our region since 1973.</p>
+          <p>Family-owned well drilling and ground loop installation for Northeast Georgia and Western South Carolina.</p>
         </div>
         <div>
           <h2 className="footer-heading">Explore</h2>
           <div className="footer-links">
-            <Link to="/services">Our services</Link>
-            <Link to="/hydro-fracturing">Hydro-fracturing</Link>
-            <Link to="/geothermal-products">Geothermal &amp; products</Link>
-            <Link to="/about-us">About us</Link>
-            <Link to="/faq">FAQs</Link>
+            <Link to="/">Home</Link>
+            <Link to="/about-us">About Us</Link>
+            <Link to="/our-work">Our Work</Link>
+            <Link to="/faqs">FAQs</Link>
+          </div>
+        </div>
+        <div>
+          <h2 className="footer-heading">Services</h2>
+          <div className="footer-links">
+            <Link to="/services">All Services</Link>
+            <Link to="/water-well-drilling">Water Well Drilling</Link>
+            <Link to="/hydro-fracturing">Hydrofracturing</Link>
+            <Link to="/geothermal-ground-loops">Geothermal Ground Loops</Link>
           </div>
         </div>
         <div className="footer-contact">
@@ -32,11 +40,6 @@ function Footer() {
             <FiMapPin aria-hidden="true" /> 3454 Old Historic 441<br />PO Box 28, Turnerville, GA 30580
           </a>
           <a href="mailto:info@davidsonwelldrillinginc.com">info@davidsonwelldrillinginc.com <FiArrowUpRight aria-hidden="true" /></a>
-        </div>
-        <div className="footer-cta">
-          <span className="eyebrow eyebrow-light">Have a project in mind?</span>
-          <h2>Let’s talk about your water needs.</h2>
-          <Link className="button button-light" to="/contact">Request a quote <FiArrowUpRight aria-hidden="true" /></Link>
         </div>
       </div>
       <div className="footer-bottom">
